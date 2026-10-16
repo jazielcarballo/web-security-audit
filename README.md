@@ -60,6 +60,10 @@ web-security-audit/
 └── LICENSE
 ```
 
+## Author
+
+Created by **Jaziel Carballo** ([@jazielcarballo](https://github.com/jazielcarballo)).
+
 ## License
 
 [MIT](LICENSE)
