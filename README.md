@@ -7,7 +7,7 @@ It adapts the review to the technologies it actually finds (Supabase, Firebase, 
 ## What it does
 
 - **Understands** the platform: what it does, its stack, who uses it, and what is worth protecting.
-- **Reviews** the applicable controls from the OWASP Top 10, OWASP ASVS, and real-world pentesting vectors: authentication and sessions, access control (IDOR, BOLA, multi-tenant isolation), injection, XSS, CSRF, SSRF, file uploads, business logic, payments, headers, infrastructure, dependencies, CI/CD, and AI/LLM usage.
+- **Reviews** the applicable controls from the OWASP Top 10, OWASP ASVS, and real-world pentesting vectors: authentication and sessions, access control (IDOR, BOLA, multi-tenant isolation), injection, XSS, CSRF, SSRF, file uploads, business logic, payments, headers, infrastructure, dependencies, runtime and base-image advisories, CI/CD, and AI/LLM usage.
 - **Tests methodically**: inventories the attack surface, builds an authorization matrix (anonymous / user A / user B / admin), and reproduces each finding by hand before reporting it.
 - **Fixes** what is safe to fix automatically, asks before behavioral changes, and writes manual steps for external dashboards.
 - **Writes a report** (`security/report.md`) in plain words, with severity levels, business-impact examples, a manual action checklist, and a glossary.

@@ -53,6 +53,7 @@ For each applicable control, find concrete evidence: file and line, or the comma
 ### Toolchain
 - Secrets in code and git history: `gitleaks` or `trufflehog`
 - Dependencies: `npm audit` or `osv-scanner` (JS), `pip-audit` (Python), `composer audit` (PHP), `cargo audit` (Rust)
+- Runtime and base image: `php -v`, `node -v`, `python -V`, `java -version` executed in the running process, plus the Dockerfile `FROM` tag and the hosting panel version. Lockfile scanners do not see this layer.
 - Static analysis: `semgrep` with the `p/security-audit` ruleset, plus the stack's own (Brakeman, Bandit, ESLint security plugins)
 - Headers and transport: `curl -I` against staging; `testssl.sh` if certificates are in scope
 - Dynamic scan, staging only: OWASP ZAP baseline scan and `nuclei` with default templates
@@ -64,12 +65,20 @@ Rate each finding:
 - 🟡 **Improvement**: strengthens defenses or limits damage if something fails. Fix this month.
 - ⚪ **Informational**: good practice, no immediate risk.
 
-Don't inflate severity. A missing header is not urgent; an exposed payment key is.
+Don't inflate severity. A missing header is not urgent; an exposed payment key is. But an unauthenticated remote code execution with public exploitation counts as 🔴 even when it needs special conditions to trigger: the person cannot wait for a week while scanners try it. If the vulnerable version was exposed while the advisory was public, patching alone is not enough — open the incident-response track in Phase 4.
 
 ## Phase 4: Fix
 - **Automatic fix** (no need to ask): escaping output, adding headers, parameterizing queries, updating dependencies to patch or minor versions, and adding files to `.gitignore`.
-- **Fix with confirmation**: changes that alter visible behavior, such as CORS, caching, data-access policies, major version upgrades, or blocking routes. First explain what could stop working.
+- **Fix with confirmation**: changes that alter visible behavior, such as CORS, caching, data-access policies, major version upgrades, or blocking routes. First explain what could stop working. **Upgrading the language runtime or base image belongs here**, even on a patch release: it can change behavior for the whole app and needs a restart.
 - **Manual action**: anything that lives in external dashboards. Write it as numbered steps, for example: "Go to Stripe → Developers → API keys → Roll key".
+
+**Verifying a runtime upgrade**: confirm the patched version in the running process (`php -v`, `node -v` inside the container or hosting panel), not only in the manifest or image tag, and restart the service. A patched binary that was never restarted is still the old one in memory.
+
+**If a critical advisory was public while the system was exposed**, an update is not the end. Run an incident-response pass and tell the person plainly that the machine may have been compromised:
+- Look for webshells and files modified during the exposure window, unknown admin or database users, new cron jobs or scheduled tasks, and outbound connections to unknown hosts.
+- Read the logs around the window for unusual requests, error bursts, or requests to files that should not exist.
+- Rotate every secret the process could read: `.env`, database credentials, API keys, and session or signing keys.
+- Record the exposure dates and exactly what was checked, so the person has a trace if something surfaces later.
 
 After each fix, verify that the app builds and existing tests pass. When reasonable, add a test proving the problem no longer occurs.
 
@@ -97,6 +106,9 @@ Ordered by urgency, with `[ ]` checkboxes.
 
 ### 4. What was and wasn't reviewed
 List the controls marked "not applicable", "handled by the provider", and "not verified". Close with an honest note: this review reduces risk, but it doesn't replace a professional penetration test, especially if the platform handles money or sensitive data at scale.
+
+### 5. Verified versions
+One line per technology: the runtime, framework, and base image version found, the version it should be on, and where it was checked (container, CI, hosting panel), with the date. This is the record that answers "were we exposed?" later.
 
 ### Glossary
 Include only terms that appear in the report, each defined in one line. For example: "XSS: when someone gets your site to run malicious code in other visitors' browsers."
@@ -185,6 +197,8 @@ Include only terms that appear in the report, each defined in one line. For exam
 
 ## I. Secure development and dependencies
 - Dependency audit with the package manager. Recommend Dependabot or an equivalent.
+- **Runtime and base image**: the language interpreter or server (PHP, Node, Python, Ruby, JRE, nginx, OpenSSL, glibc) is not a package the lockfile shows, so `npm audit` or `composer audit` will never flag its critical vulnerabilities. Get the exact version from the running process, compare it against the patched release of every open critical advisory, and check whether the branch is past end-of-life (no patches exist, so "up to date" is impossible).
+- **Critical advisory sweep**: check the runtime and framework against advisories published since the last update, using the project's advisory page, GitHub Advisories, OSV, and CISA KEV for actively exploited issues. A patched dependency tree on top of a vulnerable runtime is still remotely exploitable.
 - Static analysis (for example, Semgrep) and, if staging exists, a basic dynamic scan with OWASP ZAP.
 - Lockfile committed.
 - CI/CD: secrets live in the CI's secret store, never in workflow files or Dockerfiles; pull requests from forks cannot read secrets; nothing from `github.event.*` (PR titles, branch names) is interpolated into `run:` blocks; deploy tokens, PATs, and cloud roles carry the minimum scope; repositories that contain secrets stay private.
@@ -269,7 +283,11 @@ Load only the modules for the technologies detected. If the stack isn't listed h
 - Next.js: Server Actions and API routes validate the session and resource ownership.
 
 ### PHP / Laravel
+- **Runtime version**: `php -v` and `php -r 'echo PHP_VERSION;'` inside the running process (container, FPM pool, hosting panel), not only the image tag or the composer constraint. Cross-check `FROM php:x.y-*` in the Dockerfile, `require.php` and `config.platform` in `composer.json`, the CI workflows, `.platform.app.yaml`, and Forge/Envoyer or cPanel/Plesk settings. These drift: an updated image can still be running an old container.
+- **Advisories**: compare the exact version against the patched releases of open critical advisories and against the support timeline. Branches past end-of-life (8.1 and older) receive no patches. `expose_php=Off` reveals less, but hiding a version is not fixing it.
+- **Upgrade mechanics**: after updating, restart PHP-FPM or the web server and re-run `php -v`; the patched binary does nothing until the service restarts. If the version was exposed while an advisory was public, follow the incident-response pass in Phase 4.
 - `APP_DEBUG=false` in production.
+- `display_errors=Off` and `log_errors=On`; delete stray `phpinfo()` files and default sample `index.php` (FrankenPHP images before 1.12.5 shipped one that executes `phpinfo()`).
 - `$fillable` or `$guarded` on models (mass assignment).
 - `{!! !!}` only with trusted content.
 - Policies and Gates in controllers.
