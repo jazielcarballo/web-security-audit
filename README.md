@@ -1,5 +1,7 @@
 # Web Security Audit
 
+> **Last updated: 2026-10-22** — added runtime and base-image advisory checks (the layer `composer audit` and `npm audit` cannot see), plus a post-exposure incident-response pass and a "verified versions" section in the report. See [CHANGELOG.md](CHANGELOG.md).
+
 A [Claude](https://claude.ai) skill that runs a full security review of a web platform — any stack — fixes what is safe to fix, and explains the risks in plain language to someone with **no cybersecurity background**.
 
 It adapts the review to the technologies it actually finds (Supabase, Firebase, Cloudflare, Vercel, Stripe, WordPress, Node, Laravel, Rails, Spring, .NET, Django, and more), so you get concrete findings with file and line references instead of a generic checklist.
@@ -57,6 +59,7 @@ or ask directly, for example:
 web-security-audit/
 ├── SKILL.md      # The skill (frontmatter + instructions)
 ├── README.md
+├── CHANGELOG.md  # Dated record of changes
 └── LICENSE
 ```
 
