@@ -17,6 +17,12 @@ All notable changes to this skill are documented here. Dates are `YYYY-MM-DD`.
 - Mobile and API tools in the toolchain: MobSF, `apktool`/`jadx`, Frida/objection/drozer, `jwt_tool`, `grpcurl`, `websocat`, `graphql-cop`/`clairvoyance`, `trivy`, `checkov`, `syft`, and `cosign`.
 - Mobile-specific safety rules and a mobile subsection in the report, including verified app/SDK versions.
 
+### Documentation
+
+- Expanded the README with the full audit and fix coverage, a project overview, principles, scope and limitations, a coverage matrix, the five-phase workflow, and a detailed safety section.
+- Added a cybersecurity-themed cover image (`assets/cover.png`) to the repository and README.
+- Expanded the GitHub About description and topics.
+
 ### Changed
 
 - The skill now covers web, API, and mobile in the description, Phase 1, authorization matrix, severity guidance, and report.
