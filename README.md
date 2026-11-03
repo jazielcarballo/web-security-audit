@@ -356,7 +356,16 @@ Contributions are welcome. If you find a missing control, a false positive patte
 
 ## Author
 
-Created by **Jaziel Carballo** ([@jazielcarballo](https://github.com/jazielcarballo)).
+Created and maintained by **Jaziel A. Carballo Tadeo**, a PhD candidate in Geospatial Information Sciences at [CentroGeo](https://www.centrogeo.org.mx) (National Geointelligence Laboratory), where he researches the use of artificial intelligence for the preservation of Yucatec Maya. He is a Systems Engineer and Master in Engineering from Tecnológico Nacional de México, with a teaching specialization from the Universidad Autónoma de Yucatán (UADY).
+
+With over 10 years of experience, he teaches at [Universidad Anáhuac Mayab](https://www.anahuacmayab.mx). He is a certified Google Education Educator for Gemini, a former Teaching With Purpose fellow at Harvard Business Publishing, and was accepted to the Lisbon Machine Learning School (LxMLS 2026), part of the European ELLIS network for deep machine learning.
+
+His research and teaching interests include natural language processing, indigenous languages, generative artificial intelligence, and AI applied to education.
+
+- Website: [jazielcarballo.com](https://jazielcarballo.com)
+- GitHub: [@jazielcarballo](https://github.com/jazielcarballo)
+- Research group: [GILTIA profile](https://giltia.github.io/author/jaziel-a.-carballo-tadeo/)
+- Email: [jaziel.carballo@gmail.com](mailto:jaziel.carballo@gmail.com)
 
 ## License
 

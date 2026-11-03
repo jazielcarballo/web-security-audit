@@ -22,6 +22,7 @@ All notable changes to this skill are documented here. Dates are `YYYY-MM-DD`.
 - Expanded the README with the full audit and fix coverage, a project overview, principles, scope and limitations, a coverage matrix, the five-phase workflow, and a detailed safety section.
 - Added a cybersecurity-themed cover image (`assets/cover.png`) to the repository and README.
 - Expanded the GitHub About description and topics.
+- Expanded the Author section with background, research interests, and contact links.
 
 ### Changed
 
