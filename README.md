@@ -63,6 +63,10 @@ It also reviews the parts that usually live outside the repository — provider 
 
 This is not a substitute for a professional penetration test, a compliance certification, or a legal review. It does not test third-party services, perform phishing or social engineering, attack infrastructure outside the agreed scope, or guarantee that no vulnerability exists. For platforms that handle money or sensitive data at scale, use this review as a first pass and pair it with an independent professional assessment.
 
+### Project status
+
+Actively maintained. User-facing changes are recorded in [CHANGELOG.md](CHANGELOG.md), and design decisions and verification steps are recorded in [WORKLOG.md](WORKLOG.md).
+
 ## What it audits
 
 The review adapts to the stack it finds. Each control is classified as applicable, handled by the provider, not applicable, or manual review, and the matching technology module is loaded.
@@ -346,7 +350,8 @@ web-security-audit/
 │   └── cover.png   # Repository cover image
 ├── SKILL.md        # The skill (frontmatter + instructions)
 ├── README.md
-├── CHANGELOG.md    # Dated record of changes
+├── CHANGELOG.md    # Dated record of user-facing changes
+├── WORKLOG.md      # Dated work log: decisions and verification
 └── LICENSE
 ```
 
