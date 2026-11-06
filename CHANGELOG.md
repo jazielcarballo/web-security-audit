@@ -2,6 +2,22 @@
 
 All notable changes to this skill are documented here. Dates are `YYYY-MM-DD`.
 
+## 2026-11-05
+
+### Added
+
+- Evidence standard: three verdicts (`confirmed`, `needs validation`, `rejected`), severity only for demonstrated impact, adversarial validation by a second pass, and bounded proof that never runs stress or cost-generating tests.
+- Coverage ledger (`security/coverage.md`) that tracks entry surface × trust boundary × subsystem × attack class, plus stable finding fingerprints so later runs revalidate instead of duplicating.
+- Sad-path testing: absent, empty, zero, negative, over-limit, duplicate, mixed-encoding, stale, revoked, reordered, concurrent, partially migrated, and rollback inputs.
+- Anti-patterns section and a deeper control catalog adapted from Cloudflare's `security-audit-skill`: OAuth/SSO, SAML, passkeys/WebAuthn, BOLA/BFLA on every verb, policy/query disagreement, composite-key collisions, per-item and stale authorization, second-order injection, XSS contexts and DOM clobbering, SSRF and metadata endpoints, Host/forwarded-header trust, response-header injection, cache poisoning and deception, archive extraction, prototype pollution, CORS, REST/GraphQL/WebSocket/webhook/pagination/caching checks, state-machine and time-based logic, workload identity, trusted proxy/mesh, ingress reachability, configuration precedence, secret lifecycle, event-source identity, dependency namespace confusion, mutable build inputs, generated-source provenance, build-context inclusion, CI/CD, CI trust mixing, and release integrity.
+- Report sections for confirmed findings only, needs validation, hardening notes, manual action checklist, what was and wasn't reviewed, verified versions, and rejected candidates.
+- README coverage rows for client-side/browser and availability, plus a section on the coverage ledger and finding fingerprints.
+
+### Changed
+
+- Confirmed findings and needs-validation items are now reported separately, and unconfirmed items carry no severity.
+- One pass no longer implies a clean codebase: unresolved and changed-source items from a prior report count as current work.
+
 ## 2026-11-03
 
 ### Added

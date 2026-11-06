@@ -21,7 +21,7 @@
   <img alt="Standards" src="https://img.shields.io/badge/standards-OWASP%20Top%2010%20%7C%20API%20Top%2010%20%7C%20MASVS-0ea5e9?style=flat-square">
 </p>
 
-> **Last updated: 2026-11-03** — added API and mobile coverage (OWASP API Top 10 and MASVS/MASTG), plus modern web vectors: request smuggling, HTTP parameter pollution, GraphQL/gRPC/WebSocket, JWT/OAuth hardening, XXE, deserialization, SSTI, prototype pollution, race conditions, cloud/container/CI-CD, and supply chain. See [CHANGELOG.md](CHANGELOG.md).
+> **Last updated: 2026-11-05** — added an evidence standard (confirmed / needs validation / rejected), adversarial validation, a coverage ledger with finding fingerprints, anti-patterns, and a deeper control catalog adapted from Cloudflare's `security-audit-skill`. See [CHANGELOG.md](CHANGELOG.md).
 
 ## Table of contents
 
