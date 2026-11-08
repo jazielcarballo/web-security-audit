@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/cover.png" alt="Web and Mobile Security Audit — Claude skill cover" width="100%">
+  <img src="assets/cover.jpg" alt="Web and Mobile Security Audit — Claude skill cover" width="100%">
 </p>
 
 <h1 align="center">Web &amp; Mobile Security Audit</h1>
@@ -397,7 +397,7 @@ You can point it at a web app, an API, a mobile app, or all three:
 ```text
 web-security-audit/
 ├── assets/
-│   └── cover.png   # Repository cover image
+│   └── cover.jpg   # Repository cover image
 ├── SKILL.md        # The skill (frontmatter + instructions)
 ├── README.md
 ├── CHANGELOG.md    # Dated record of user-facing changes
