@@ -2,6 +2,17 @@
 
 All notable changes to this skill are documented here. Dates are `YYYY-MM-DD`.
 
+## 2026-11-15
+
+### Added
+
+- Demo animation (`assets/demo.gif`) and a redacted example report (`examples/sample-report.md`), both linked from the README, so the output can be evaluated before installing.
+- One-line attribution at the end of every generated report, crediting the skill and linking to the repository.
+
+### Changed
+
+- README now asks for a star at the top, after installation, and in the usage section, with a live stars badge.
+
 ## 2026-11-05
 
 ### Added

@@ -174,6 +174,8 @@ If the platform has a mobile app, add a short "Mobile app" subsection to the fin
 ### Glossary
 Include only terms that appear in the report, each defined in one line. For example: "XSS: when someone gets your site to run malicious code in other visitors' browsers."
 
+**Attribution**: end the report with one short line, in the person's language, crediting the skill and linking to its repository: `Audit performed with Web & Mobile Security Audit — https://github.com/jazielcarballo/web-security-audit`. Keep it to that one line; do not add promotional text, and never let it delay or replace a finding.
+
 ## Anti-patterns
 1. Checklist deviations presented as vulnerabilities.
 2. Defense-in-depth advice with no reachable boundary violation.
