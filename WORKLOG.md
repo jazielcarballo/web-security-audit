@@ -2,6 +2,48 @@
 
 A dated record of significant changes, decisions, and verification steps for this skill. For user-facing changes, see [CHANGELOG.md](CHANGELOG.md).
 
+## 2026-11-15
+
+### Objective
+
+Close the gap between clones and stars: add visible conversion points and evidence of value without touching the audit methodology.
+
+### Completed
+
+- Added a live stars badge and star CTAs to the README (top, installation, usage), plus a link to an example report near the top.
+- Added `examples/sample-report.md`, a fictional but complete report showing the seven-section output.
+- Added an attribution rule to Phase 5 of `SKILL.md`: every generated report ends with one line linking back to the repository.
+- Generated `assets/demo.gif` (960x540, 10 s, 120 frames) from rendered terminal frames and embedded it in the About section.
+- Recorded the user-facing changes in `CHANGELOG.md` and published release `v1.2.0` with the star CTA.
+
+### Commits and releases
+
+| Item | Reference |
+| --- | --- |
+| Demo, example report, and report attribution | commit `6e341d9` |
+| v1.2.0 release | https://github.com/jazielcarballo/web-security-audit/releases/tag/v1.2.0 |
+
+### Decisions
+
+- Ask for the star after value is delivered (end of the report, after installation), not before.
+- Keep attribution to one line and in the person's language; no promotional text inside findings.
+- The demo shows the workflow and points to the example report; it never implies a real client audit.
+- No bought stars and no star-only requests; reach comes from directories and technical write-ups.
+
+### Verification
+
+- `assets/demo.gif`: 120 frames, 10 s, 960x540, 31 KB; every line fits inside the 920 px terminal panel.
+- README links to `examples/sample-report.md` and `assets/demo.gif`; both exist on `main`.
+- The attribution instruction is in Phase 5 of `SKILL.md`.
+- `v1.2.0` is published and marked latest; `main` is in sync with `origin/main`.
+
+### Next / optional
+
+1. Submit to awesome-claude-skills, claudeskills.com, skills.md, and the Claude Code plugin marketplace.
+2. Publish one technical post per real, anonymized finding, plus one Show HN.
+3. Open five `good-first-issue` items for stack modules (Laravel, Rails, Go, .NET, Flutter).
+4. Track GitHub Traffic referrers and clone-to-star conversion per channel.
+
 ## 2026-11-05
 
 ### Objective
