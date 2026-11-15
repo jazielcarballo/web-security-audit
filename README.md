@@ -15,6 +15,7 @@
 
 <p align="center">
   <a href="https://github.com/jazielcarballo/web-security-audit/releases"><img alt="Release" src="https://img.shields.io/github/v/release/jazielcarballo/web-security-audit?style=flat-square&label=release"></a>
+  <a href="https://github.com/jazielcarballo/web-security-audit/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/jazielcarballo/web-security-audit?style=flat-square&label=stars"></a>
   <a href="https://github.com/jazielcarballo/web-security-audit/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/github/license/jazielcarballo/web-security-audit?style=flat-square"></a>
   <img alt="Claude Skill" src="https://img.shields.io/badge/Claude-Skill-6366f1?style=flat-square">
   <img alt="Coverage" src="https://img.shields.io/badge/coverage-web%20%7C%20API%20%7C%20mobile-22d3ee?style=flat-square">
@@ -22,6 +23,8 @@
 </p>
 
 > **Last updated: 2026-11-05** — added an evidence standard (confirmed / needs validation / rejected), adversarial validation, a coverage ledger with finding fingerprints, anti-patterns, and a deeper control catalog adapted from Cloudflare's `security-audit-skill`. See [CHANGELOG.md](CHANGELOG.md).
+
+**If this skill saves you an audit, [star the repository](https://github.com/jazielcarballo/web-security-audit).** Stars are how other founders and small teams find it. New here? Read a [redacted example report](examples/sample-report.md) to see the output first.
 
 ## Table of contents
 
@@ -44,6 +47,11 @@
 **Web & Mobile Security Audit** is a [Claude](https://claude.ai) skill for people who need a serious security review but do not have a security team. It reviews the code and configuration of a web application, API, or mobile app and its backend, identifies the issues that actually matter, fixes the ones that can be fixed safely, and explains every finding in plain language.
 
 It is built for founders, small engineering teams, freelancers, and agencies that ship software and want an honest, evidence-based assessment before or after launch. It is not a scanner wrapper: every finding is reproduced by hand, with a captured request and response or a file-and-line reference, before it goes into the report.
+
+<p align="center">
+  <img src="assets/demo.gif" alt="Demo: running /web-security-audit and generating a plain-language report" width="85%">
+</p>
+<p align="center"><em>From one command to a plain-language report. Output shown is from the <a href="examples/sample-report.md">example report</a>.</em></p>
 
 ### Why it exists
 
@@ -371,6 +379,8 @@ git clone https://github.com/jazielcarballo/web-security-audit.git "$env:USERPRO
 
 Or download `SKILL.md` and place it at `<skills-dir>/web-security-audit/SKILL.md`.
 
+After it saves you time, [star the repo](https://github.com/jazielcarballo/web-security-audit) so the next person can find it.
+
 ## Usage
 
 This skill is set to **explicit invocation only** (`disable-model-invocation: true`), so it will not trigger on its own. Invoke it by name:
@@ -387,6 +397,8 @@ You can point it at a web app, an API, a mobile app, or all three:
 
 > Audit the web app and the Android app, including the backend API, and write the report in Spanish.
 
+See [`examples/sample-report.md`](examples/sample-report.md) for a redacted, fictional example of the report it produces.
+
 ## Requirements
 
 - Claude with skill support (Claude Code, Claude desktop app, or Claude.ai).
@@ -397,7 +409,10 @@ You can point it at a web app, an API, a mobile app, or all three:
 ```text
 web-security-audit/
 ├── assets/
-│   └── cover.jpg   # Repository cover image
+│   ├── cover.jpg   # Repository cover image
+│   └── demo.gif    # Demo animation used in the README
+├── examples/
+│   └── sample-report.md  # Redacted example of the report it produces
 ├── SKILL.md        # The skill (frontmatter + instructions)
 ├── README.md
 ├── CHANGELOG.md    # Dated record of user-facing changes
